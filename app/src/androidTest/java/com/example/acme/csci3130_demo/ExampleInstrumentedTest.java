@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import android.support.test.espresso.Espresso;
-import android.widget.EditText;
 
 import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -31,10 +30,10 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testType() {
-        Espresso.onView(withId(R.id.editText)).perform(click(), clearText(), typeText("jJn"));
-        Espresso.onView(withId(R.id.button)).perform(click());
+        Espresso.onView(withId(R.id.passwordText)).perform(click(), clearText(), typeText("jJn"));
+        Espresso.onView(withId(R.id.validateButton)).perform(click());
 //        Espresso.onView(withText("jun")).check(matches(isDisplayed()));
-        Espresso.onView(withId(R.id.textView)).check(matches(withText(("jJn\n"))));
+        Espresso.onView(withId(R.id.messageView)).check(matches(withText(("jJn\n"))));
 
     }
 

@@ -1,12 +1,14 @@
 package com.example.acme.csci3130_demo;
 
+import java.util.HashMap;
+
 public class Validator {
     private String password;
 
     public Validator() {
     }
 
-    public boolean validate(String password) {
+    public Message validate(String password) {
         this.password = password;
 
         String atLeastOneLowerAndUpperCase = "(?=.*[a-z])(?=.*[A-Z]).{8,}";
@@ -15,17 +17,35 @@ public class Validator {
 
 
         if(this.password.equals("password") )
-            return false;
+            return new Message(false, "You can't just use 'password'");
         else if(this.password.length() < 8)
-            return false;
+            return new Message(false, "Password is less than 8 characters long");
         else if(!password.matches(atLeastOneLowerAndUpperCase))
-            return false;
+            return new Message(false,"Password should have at least one upper and lower case");
         else if(!password.matches(atLeastOneSpecialChar))
-            return false;
+            return new Message(false, "Password has have at least one special character");
         else if(!password.matches(atLeastOneDigit))
-            return false;
+            return new Message(false, "Password should have at least one dight");
 
-        return true;
+        return new Message(true, "Your password is strong enough!");
     }
 
+}
+
+class Message{
+    private boolean result;
+    private String message;
+
+    public Message(boolean result, String message) {
+        this.result = result;
+        this.message = message;
+    }
+
+    public boolean getResult() {
+        return result;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

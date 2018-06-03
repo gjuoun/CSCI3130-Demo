@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidatorTest {
     private static Validator validator;
+    private static Message message;
 
     @BeforeClass
     public static void initClass(){
@@ -20,20 +21,20 @@ public class ValidatorTest {
 
     @Test
     public void testValidateEasy() {
-        assertFalse(validator.validate("password"));
-        assertFalse(validator.validate("123442"));
-        assertFalse(validator.validate("Wnasd@"));
-        assertFalse(validator.validate("Ccccnn"));
+        assertFalse(validator.validate("password").getResult());
+        assertFalse(validator.validate("123442").getResult());
+        assertFalse(validator.validate("Wnasd@").getResult());
+        assertFalse(validator.validate("Ccccnn").getResult());
 
     }
 
     @Test
     public void testValidateMedium() {
-        assertFalse(validator.validate("Sccccccccccccc"));
-        assertFalse(validator.validate("Scc@ffffffffff"));
+        assertFalse(validator.validate("Sccccccccccccc").getResult());
+        assertFalse(validator.validate("Scc@ffffffffff").getResult());
 
-        assertTrue(validator.validate("Ssddij2233@#$"));
-        assertTrue(validator.validate("Abcdefg$%#989"));
+        assertTrue(validator.validate("Ssddij2233@#$").getResult());
+        assertTrue(validator.validate("Abcdefg$%#989").getResult());
     }
 
 
