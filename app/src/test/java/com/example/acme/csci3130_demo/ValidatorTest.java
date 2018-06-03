@@ -16,7 +16,7 @@ public class ValidatorTest {
 
     @Test
     public void testValidate() {
-        assertTrue(validator.validate());
+        assertFalse(validator.validate());
     }
 
     @Test

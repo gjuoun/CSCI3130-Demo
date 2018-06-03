@@ -8,7 +8,13 @@ public class Validator {
     }
 
     public boolean validate() {
-        return this.password.equals("password") && this.password.length() >= 8;
+
+        if(this.password.equals("password") )
+            return false;
+        else if(this.password.length() < 8)
+            return false;
+
+        return true;
     }
 
     public String getPassword() {
